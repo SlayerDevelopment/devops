@@ -50,5 +50,5 @@ if __name__ == "__main__":
     # deltaTablePath = SaveToLH + "/Tables/" + tableName
     deltaTablePath = "Tables/salesdataset"
 
-    df = spark_session.read.format("csv").load(csvFilePath)
+    df = spark_session.read.format('csv').options(header='true', inferschema='true').load(csvFilePath)
     df.write.mode("overwrite").format("delta").save(deltaTablePath)
